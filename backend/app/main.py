@@ -10,7 +10,6 @@ from app.api.v1.feedback import router as feedback_router
 from app.api.v1.employment import router as employment_router 
 from app.api.v1.reports import router as reports_router 
  
-# Create tables 
 Base.metadata.create_all(bind=engine) 
  
 app = FastAPI( 
@@ -30,7 +29,6 @@ app.add_middleware(
     allow_headers=["*"], 
 ) 
  
-# Include routers 
 app.include_router(beneficiaries_router, prefix="/api/v1") 
 app.include_router(programs_router, prefix="/api/v1") 
 app.include_router(assessments_router, prefix="/api/v1") 
