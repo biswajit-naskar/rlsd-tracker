@@ -8,6 +8,7 @@ from app.api.v1.programs import router as programs_router
 from app.api.v1.assessments import router as assessments_router 
 from app.api.v1.feedback import router as feedback_router 
 from app.api.v1.employment import router as employment_router 
+from app.api.v1.reports import router as reports_router 
  
 # Create tables 
 Base.metadata.create_all(bind=engine) 
@@ -35,6 +36,7 @@ app.include_router(programs_router, prefix="/api/v1")
 app.include_router(assessments_router, prefix="/api/v1") 
 app.include_router(feedback_router, prefix="/api/v1") 
 app.include_router(employment_router, prefix="/api/v1") 
+app.include_router(reports_router, prefix="/api/v1") 
  
 @app.get("/") 
 async def root(): 
