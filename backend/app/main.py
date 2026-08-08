@@ -3,7 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings 
 from app.core.database import engine 
 from app.models.base import Base 
-from app.api.v1 import beneficiaries 
+from app.api.v1.beneficiaries import router as beneficiaries_router 
+from app.api.v1.programs import router as programs_router 
+from app.api.v1.assessments import router as assessments_router 
+from app.api.v1.feedback import router as feedback_router 
+from app.api.v1.employment import router as employment_router 
  
 # Create tables 
 Base.metadata.create_all(bind=engine) 
@@ -26,7 +30,11 @@ app.add_middleware(
 ) 
  
 # Include routers 
-app.include_router(beneficiaries.router, prefix="/api/v1") 
+app.include_router(beneficiaries_router, prefix="/api/v1") 
+app.include_router(programs_router, prefix="/api/v1") 
+app.include_router(assessments_router, prefix="/api/v1") 
+app.include_router(feedback_router, prefix="/api/v1") 
+app.include_router(employment_router, prefix="/api/v1") 
  
 @app.get("/") 
 async def root(): 
